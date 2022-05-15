@@ -1,46 +1,67 @@
 ﻿@inherits LayoutComponentBase
 
 <MApp>
-    <!--左边布局-->
-    <MNavigationDrawer App>
-        <MSheet Color="grey lighten-4" Class="pa-4">
-            <MRow>
-                <MCol Cols="3">
-                    <MAvatar>
-                        <MImage Alt=".Net Logo" Src="https://cdn.masastack.com/stack/images/website/masa-blazor/doddgu.png"></MImage>
-                    </MAvatar>
-                </MCol>
-                <MCol Align="AlignTypes.Center">
-                    <span>知识库</span>
-                </MCol>
-            </MRow>
-        </MSheet>
-        <MList Shaped>
-            <MSubheader>菜单列表</MSubheader>
-            <MListItemGroup @bind-Value="_selectedItem"
-                            Color="primary">
+    <MAppBar App Height="72" Flat>
+        <MSpacer></MSpacer>
+        <MResponsive MaxWidth="156">
+            <MTextField TValue="string" Dense Flat HideDetails="true" SoloInverted></MTextField>
+        </MResponsive>
+    </MAppBar>
+    <MNavigationDrawer App Width="300">
+        <MNavigationDrawer Color="grey lighten-3" MiniVariant=true Class="pt-9" Absolute>
+            <MAvatar Color="grey darken-1" Class="d-block mx-auto" Size="36"></MAvatar>
+            <MDivider Class="my-5 mx-3"></MDivider>
+            <MAvatar Color="grey darken-1" Class="d-block ma-auto mb-9" Size="28"></MAvatar>
+            <MAvatar Color="grey darken-1" Class="d-block ma-auto mb-9" Size="28"></MAvatar>
+            <MAvatar Color="grey darken-1" Class="d-block ma-auto mb-9" Size="28"></MAvatar>
+        </MNavigationDrawer>
+        <MSheet Color="grey lighten-5" Height="128" Style="width:100%"></MSheet>
+        <MList Shaped Class="pl-14">
+            <MSubheader>列表</MSubheader>
+            <MListItemGroup @bind-Value="_selectedItem" Color="primary">
                 @foreach (var item in _items)
                 {
-                    <MListItem Link Href="@item.Href">
+                    <MListItem>
                         <MListItemIcon>
                             <MIcon>
                                 @item.Icon
                             </MIcon>
                         </MListItemIcon>
-                        <MListItemContent>
-                            <MListItemTitle>@item.Text</MListItemTitle>
-                        </MListItemContent>
+                            <MListItemContent>
+                        <MListItemTitle>@item.Text</MListItemTitle>
+                    </MListItemContent>
                     </MListItem>
+                
                 }
             </MListItemGroup>
         </MList>
     </MNavigationDrawer>
-    <!--右边布局-->
+    <!--右上-->
+    <MNavigationDrawer App Right Clipped>
+        <MListItem>
+            <MListItemContent>
+                <MListItemTitle>Single-Line item</MListItemTitle>
+            </MListItemContent>
+        </MListItem>
+        <MListItem TwoLine>
+            <MListItemContent>
+                <MListItemTitle>Two-Line item</MListItemTitle>
+            </MListItemContent>
+        </MListItem>
+        <MListItem ThreeLine>
+            <MListItemContent>
+                <MListItemTitle>Three-Line item</MListItemTitle>
+            </MListItemContent>
+        </MListItem>
+    </MNavigationDrawer>
+
     <MMain>
         @Body
     </MMain>
+    <MFooter App Height="72" Inset Color="transparent">
+        <MTextField TValue="string" Solo Rounded Dense Flat BackgroundColor="grey lighten-1" HideDetails="true"></MTextField>
+    </MFooter>
 </MApp>
-
 @code {
     private StringNumber _selectedItem = 0;
     private Item[] _items = new Item[]
