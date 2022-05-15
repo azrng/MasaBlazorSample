@@ -21,7 +21,7 @@
                             Color="primary">
                 @foreach (var item in _items)
                 {
-                    <MListItem>
+                    <MListItem Link Href="@item.Href">
                         <MListItemIcon>
                             <MIcon>
                                 @item.Icon
@@ -45,14 +45,15 @@
     private StringNumber _selectedItem = 0;
     private Item[] _items = new Item[]
     {
-       new Item { Text= "列表1", Icon= "mdi-clock" },
-       new Item { Text= "列表2", Icon= "mdi-account" },
-       new Item { Text= "列表3", Icon= "mdi-flag" }
+       new Item { Text= "列表1", Icon= "mdi-clock",Href="/" },
+       new Item { Text= "列表2", Icon= "mdi-account",Href="Counter" },
+       new Item { Text= "列表3", Icon= "mdi-flag",Href="fetchdata" }
     };
 
     class Item
     {
         public string Text { get; set; }
         public string Icon { get; set; }
+        public string Href { get; set; }
     }
 }
